@@ -37,6 +37,7 @@ function displayCountryInfo(country) {
 
     if (!country.borders.length === 0) {
         bordersList.innerHTML = "<li>This country does not have any bordering countries.</li>";
+        alert("This country does not have any boadering countries");
         return;
     }
 
