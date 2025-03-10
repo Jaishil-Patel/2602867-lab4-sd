@@ -5,28 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country Info</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Country Informations</h1>
-    </header>
-
-    <main>
-       
-        <section>
-            <h2>Search for a Country</h2>
-            <form id="searchForm">
-                <label for="countryInput">Enter country name:</label>
-                <input type="text" id="countryInput" required>
-                <button type="submit">Search</button>
-            </form>
-        </section>
-        <section id="countryInfo"></section>
-        <section>
-            <h2>Bordering Countries</h2>
-            <ul id="borderingCountriesSec"></ul>
-        </section>
-    </main>
+    <div class="container">
+        <h1>Country Information Finder</h1>
+        <input type="text" id="countryInput" placeholder="Enter country name">
+        <button id="searchButton">Search</button>
+        <div id="countryInfo"></div>
+        <div id="borderingCountries"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
