@@ -4,7 +4,7 @@ h1 {
 
 body {
     text-align: center;
-    background: #c6b5d1 ;
+    background-color: #c6b5d1 ;
     margin: 0;
     padding: 0;
     color: white;
@@ -13,7 +13,7 @@ body {
 .container {
     margin: 20px auto;
     width: 50%;
-    background: #c6b5d1 ;
+    background-color: #c6b5d1 ;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
