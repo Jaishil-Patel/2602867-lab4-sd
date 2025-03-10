@@ -1,4 +1,6 @@
-document.getElementById("searchButton").addEventListener("click", function() {
+document.getElementById("searchForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
     const countryName = document.getElementById("countryInput").value.trim();
     if (!countryName) {
         alert("Please enter the name of a country");
@@ -23,7 +25,7 @@ document.getElementById("searchButton").addEventListener("click", function() {
 
 function displayCountryInfo(country) {
     const countryInfoDiv = document.getElementById("countryInfo");
-    const bordersSection = document.getElementById("borderingCountriesSec");
+    const bordersList = document.getElementById("borderingCountriesSec");
     
     countryInfoDiv.innerHTML = `
         <h2>${country.name.common}</h2>
@@ -34,24 +36,27 @@ function displayCountryInfo(country) {
     `;
 
 
+    bordersList.innerHTML = "";
+
     if (!country.borders || country.borders.length === 0) {
-        bordersSection.innerHTML = "<p>This country does not have any bordering countries.</p>";
+        bordersList.innerHTML = "<li>This country does not have any bordering countries.</li>";
         return;
     }
 
-    bordersSection.innerHTML = "<h3>Bordering Countries:</h3>";
 
     country.borders.forEach(code => {
         fetch(`https://restcountries.com/v3.1/alpha/${code}`)
             .then(response => response.json())
             .then(data => {
                 const borderCountry = data[0];
-                bordersSection.innerHTML += `
-                    <section>
-                        <p>${borderCountry.name.common}</p>
-                        <img src="${borderCountry.flags.svg}" alt="Flag of ${borderCountry.name.common}" class="border-flag">
-                    </section>
+
+
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                    ${borderCountry.name.common}
+                    <img src="${borderCountry.flags.svg}" alt="Flag of ${borderCountry.name.common}" class="border-flag" width="50">
                 `;
+                bordersList.appendChild(listItem);
             });
     });
 }
