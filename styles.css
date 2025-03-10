@@ -1,6 +1,6 @@
 body {
-    text-align: left;
-    background-color: #f4f4f4;
+    text-align: center;
+    background-color: #a1966f ;
     margin: 0;
     padding: 0;
 }
@@ -21,8 +21,8 @@ input {
 }
 
 button {
-    padding: 10px 15px;
-    background-color: #007BFF;
+    padding: 10px 20px;
+    background-color:  #30f542 ;
     color: white;
     border: none;
     cursor: pointer;
