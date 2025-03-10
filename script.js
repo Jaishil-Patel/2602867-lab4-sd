@@ -1,9 +1,7 @@
-document.getElementById("searchForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
+document.getElementById("searchButton").addEventListener("click", function() {
     const countryName = document.getElementById("countryInput").value.trim();
     if (!countryName) {
-        alert("Please enter the name of a country");
+        alert("Please enter a country name.");
         return;
     }
 
@@ -19,14 +17,12 @@ document.getElementById("searchForm").addEventListener("submit", function(event)
         })
         .catch(error => {
             document.getElementById("countryInfo").innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
-            document.getElementById("borderingCountriesSec").innerHTML = "";
+            document.getElementById("borderingCountries").innerHTML = "";
         });
 });
 
 function displayCountryInfo(country) {
     const countryInfoDiv = document.getElementById("countryInfo");
-    const bordersList = document.getElementById("borderingCountriesSec");
-    
     countryInfoDiv.innerHTML = `
         <h2>${country.name.common}</h2>
         <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : "N/A"}</p>
@@ -35,28 +31,29 @@ function displayCountryInfo(country) {
         <img src="${country.flags.svg}" alt="Flag of ${country.name.common}" class="country-flag">
     `;
 
+    displayBorderingCountries(country.borders || []);
+}
 
-    bordersList.innerHTML = "";
+function displayBorderingCountries(borderCountries) {
+    const bordersDiv = document.getElementById("borderingCountries");
+    bordersDiv.innerHTML = "<h3>Bordering Countries:</h3>";
 
-    if (!country.borders || country.borders.length === 0) {
-        bordersList.innerHTML = "<li>This country does not have any bordering countries.</li>";
+    if (borderCountries.length === 0) {
+        bordersDiv.innerHTML += "<p>No bordering countries.</p>";
         return;
     }
 
-
-    country.borders.forEach(code => {
+    borderCountries.forEach(code => {
         fetch(`https://restcountries.com/v3.1/alpha/${code}`)
             .then(response => response.json())
             .then(data => {
-                const borderCountry = data[0];
-
-
-                const listItem = document.createElement("li");
-                listItem.innerHTML = `
-                    ${borderCountry.name.common}
-                    <img src="${borderCountry.flags.svg}" alt="Flag of ${borderCountry.name.common}" class="border-flag" width="50">
+                const country = data[0];
+                bordersDiv.innerHTML += `
+                    <div>
+                        <p>${country.name.common}</p>
+                        <img src="${country.flags.svg}" alt="Flag of ${country.name.common}" class="border-flag">
+                    </div>
                 `;
-                bordersList.appendChild(listItem);
             });
     });
 }
