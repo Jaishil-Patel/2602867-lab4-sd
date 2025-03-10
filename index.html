@@ -1,19 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Country Info</title>
+    <title>Country Information</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Country Information Finder</h1>
-        <input type="text" id="countryInput" placeholder="Enter country name">
-        <button id="searchButton">Search</button>
-        <div id="countryInfo"></div>
-        <div id="borderingCountries"></div>
-    </div>
-    <script src="script.js"></script>
+    <header>
+        <h1>Country Information</h1>
+    </header>
+
+    <main>
+        <section id="searchSection">
+            <label for="countryInput">Enter Country Name:</label>
+            <input type="text" id="countryInput">
+            <button id="searchButton">Search</button>
+        </section>
+        <section id="countryInfoSection">
+            <h2>Country Details</h2>
+            <article id="countryInfo"></article>
+        </section>
+        <section id="borderingCountriesSection">
+            <h2>Bordering Countries</h2>
+            <ul id="borderingCountries"></ul>
+        </section>
+    </main>
 </body>
 </html>
