@@ -17,12 +17,14 @@ document.getElementById("searchButton").addEventListener("click", function() {
         })
         .catch(error => {
             document.getElementById("countryInfo").innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
-            document.getElementById("borderingCountries").innerHTML = "";
+            document.getElementById("borderingCountriesSec").innerHTML = "";
         });
 });
 
 function displayCountryInfo(country) {
     const countryInfoDiv = document.getElementById("countryInfo");
+    const bordersSection = document.getElementById("borderingCountriesSec");
+    
     countryInfoDiv.innerHTML = `
         <h2>${country.name.common}</h2>
         <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : "N/A"}</p>
@@ -31,28 +33,25 @@ function displayCountryInfo(country) {
         <img src="${country.flags.svg}" alt="Flag of ${country.name.common}" class="country-flag">
     `;
 
-    const bordersSection = document.getElementById("borderingCountriesSec");
-    if (borderCountries.length == 0) {
-        bordersSection.innerHTML += "<p>This country does not have any bordering countries.</p>";
+    // ✅ FIX: Check if borders exist
+    if (!country.borders || country.borders.length === 0) {
+        bordersSection.innerHTML = "<p>This country does not have any bordering countries.</p>";
         return;
     }
+
     bordersSection.innerHTML = "<h3>Bordering Countries:</h3>";
 
-
-    borderCountries.forEach(code => {
+    country.borders.forEach(code => {
         fetch(`https://restcountries.com/v3.1/alpha/${code}`)
             .then(response => response.json())
             .then(data => {
-                const country = data[0];
+                const borderCountry = data[0];
                 bordersSection.innerHTML += `
                     <section>
-                        <p>${country.name.common}</p>
-                        <img src="${country.flags.svg}" alt="Flag of ${country.name.common}" class="border-flag">
+                        <p>${borderCountry.name.common}</p>
+                        <img src="${borderCountry.flags.svg}" alt="Flag of ${borderCountry.name.common}" class="border-flag">
                     </section>
                 `;
             });
     });
 }
-
-
-
