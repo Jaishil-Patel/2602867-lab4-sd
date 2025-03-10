@@ -2,7 +2,7 @@ document.getElementById("searchButton").addEventListener("click", function () {
     const countryName = document.getElementById("countryInput").value.trim();
     
     if (!countryName) {
-        alert("Please enter the name of a country.");
+        alert("Search field should not be empty");
         return;
     }
 
@@ -17,7 +17,6 @@ document.getElementById("searchButton").addEventListener("click", function () {
             displayCountryInfo(data[0]);
         })
         .catch(error => {
-            document.getElementById("countryInfo").innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
             document.getElementById("borderingCountries").innerHTML = "";
         });
 });
@@ -26,6 +25,7 @@ function displayCountryInfo(country) {
     const countryInfoSection = document.getElementById("countryInfo");
     const bordersList = document.getElementById("borderingCountries");
     countryInfoSection.innerHTML = `
+    
         <h3>${country.name.common}</h3>
         <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : "N/A"}</p>
         <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
@@ -35,7 +35,7 @@ function displayCountryInfo(country) {
 
     bordersList.innerHTML = "";
 
-    if (!country.borders || country.borders.length === 0) {
+    if (!country.borders.length === 0) {
         bordersList.innerHTML = "<li>This country does not have any bordering countries.</li>";
         return;
     }
