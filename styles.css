@@ -1,17 +1,19 @@
 h1 {
-    text-align: centre;
+    text-align: center;
 }
+
 body {
-    text-align: centre;
-    background:   #ae44f3   ;
+    text-align: center;
+    background: #ae44f3;
     margin: 0;
     padding: 0;
+    color: white;
 }
 
 .container {
     margin: 20px auto;
     width: 50%;
-    background:   #ae44f3    ;
+    background: #ae44f3;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -25,9 +27,10 @@ input {
 
 button {
     padding: 10px 20px;
-    background-color:  #30f542 ;
+    background-color: #30f542;
     color: white;
     border: none;
+    cursor: pointer; 
 }
 
 #countryInfo {
@@ -35,7 +38,7 @@ button {
 }
 
 #borderingCountries {
-    text-align: centre;
+    text-align: center; 
     margin-top: 20px;
 }
 
