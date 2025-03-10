@@ -1,10 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country Info</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
@@ -12,19 +13,20 @@
     </header>
 
     <main>
-        <form id="searchForm">
-            <label for="countryInput">Enter country name:</label>
-            <input type="text" id="countryInput" required>
-            <button type="submit">Search</button>
-        </form>
-
-        <section id="countryInfo"></section>
-
+       
         <section>
-            <h2>Bordering Countries :</h2>
+            <h2>Search for a Country</h2>
+            <form id="searchForm">
+                <label for="countryInput">Enter country name:</label>
+                <input type="text" id="countryInput" required>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+        <section id="countryInfo"></section>
+        <section>
+            <h2>Bordering Countries</h2>
             <ul id="borderingCountriesSec"></ul>
         </section>
     </main>
-    
 </body>
 </html>
