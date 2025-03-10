@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Info</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Country Information</h1>
+    </header>
+
+    <main>
+        <form id="searchForm">
+            <label for="countryInput">Enter country name:</label>
+            <input type="text" id="countryInput" required>
+            <button type="submit">Search</button>
+        </form>
+
+        <section id="countryInfo"></section>
+
+        <section>
+            <h2>Bordering Countries :</h2>
+            <ul id="borderingCountriesSec"></ul>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
