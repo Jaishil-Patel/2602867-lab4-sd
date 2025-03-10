@@ -33,7 +33,7 @@ function displayCountryInfo(country) {
         <img src="${country.flags.svg}" alt="Flag of ${country.name.common}" class="country-flag">
     `;
 
-    // ✅ FIX: Check if borders exist
+
     if (!country.borders || country.borders.length === 0) {
         bordersSection.innerHTML = "<p>This country does not have any bordering countries.</p>";
         return;
